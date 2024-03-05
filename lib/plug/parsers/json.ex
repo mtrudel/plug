@@ -110,7 +110,7 @@ defmodule Plug.Parsers.JSON do
     raise Plug.TimeoutError
   end
 
-  defp decode({:error, _}, _decoder, _opts) do
-    raise Plug.BadRequestError
+  defp decode({:error, msg}, _decoder, _opts) do
+    raise Plug.BadRequestError, message: "Got error #{inspect(msg)}"
   end
 end
